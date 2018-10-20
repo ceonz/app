@@ -5,7 +5,7 @@ import Homepage from './components/Homepage';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
