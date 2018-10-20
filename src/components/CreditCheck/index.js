@@ -43,7 +43,7 @@ class CreditCheck extends Component {
             value={this.state.fundDescription}
             required={true}
           />
-          <button type="submit">Button</button>
+          <button type="submit">Submit Credit Check</button>
         </form>
       </div>
     );
