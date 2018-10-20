@@ -15,14 +15,16 @@ class CreditCheck extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <h2>Credit Check</h2>
-          <TextInputField
-            id='testid'
-            value='testvalue'
-            onChange='onchange function for now'
-            type='type'
-            required="required"
-            label="It works!"
-          />
+          {this.props.inputs.map((input) => (
+            <TextInputField
+              id='testid'
+              value='testvalue'
+              onChange='onchange function for now'
+              type='type'
+              required="required"
+              label="It works!"
+            />
+          ))}
           <button type="submit">Button</button>
         </form>
       </div>
