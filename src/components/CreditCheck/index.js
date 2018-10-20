@@ -3,18 +3,20 @@ import { TextInput, Textarea } from 'evergreen-ui';
 
 class CreditCheck extends Component {
   state = {
-    form: {
-      fundName: '',
-      ownerName: '',
-      ownerEmail: '',
-      fundDescription: '',
+    creditCheckForm: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      ssn: '',
+      ccNumber: '',
     }
   };
 
   onChange = (value, reference) => {
     this.setState({
-      form: {
-        ...this.state.form,
+      creditCheckForm: {
+        ...this.state.creditCheckForm,
         [reference]: value,
       },
     });
@@ -23,29 +25,22 @@ class CreditCheck extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <creditCheckForm onSubmit={this.onSubmit}>
           <h2>Credit Check</h2>
           {this.props.inputs.map((input) => (
             <div>
               <label htmlFor={input.reference}>{input.label}</label>
               <TextInput
                 id={input.reference}
-                value={this.state.form[input.reference]}
+                value={this.state.creditCheckForm[input.reference]}
                 type={input.type}
                 required={true}
                 onChange={e => this.onChange(e.target.value, input.reference)}
               />
             </div>
           ))}
-          <label htmlFor="fundDescription">Fund Description</label>
-          <Textarea
-            id="fundDescription"
-            onChange={e => this.onChange(e.target.value, 'fundDescription')}
-            value={this.state.fundDescription}
-            required={true}
-          />
           <button type="submit">Submit Credit Check</button>
-        </form>
+        </creditCheckForm>
       </div>
     );
   }
@@ -54,19 +49,34 @@ class CreditCheck extends Component {
 CreditCheck.defaultProps = {
   inputs: [
     {
-      label: 'Fund Name',
-      reference: 'fundName',
+      label: 'First Name',
+      reference: 'firstName',
       type: 'text',
     },
     {
-      label: 'Owner Name',
-      reference: 'ownerName',
+      label: 'Last Name',
+      reference: 'lastName',
       type: 'text',
     },
     {
-      label: 'Owner Email',
-      reference: 'ownerEmail',
+      label: 'Email',
+      reference: 'email',
       type: 'email',
+    },
+    {
+      label: 'Phone',
+      reference: 'phone',
+      type: 'number',
+    },
+    {
+      label: 'Social Security Number',
+      reference: 'ssn',
+      type: 'number',
+    },
+    {
+      label: 'Credit Card Number',
+      reference: 'ccNumber',
+      type: 'number',
     },
   ]
 };
