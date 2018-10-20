@@ -26,7 +26,7 @@ class FundRegistration extends Component {
         <form onSubmit={this.onSubmit}>
           <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
-            <div>
+            <div key={input.reference}>
               <label htmlFor={input.reference}>{input.label}</label>
               <TextInput
                 id={input.reference}
