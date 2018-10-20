@@ -22,12 +22,6 @@ class CreditCheck extends Component {
     });
   }
 
-// WIP
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.saveCreditCheckForm(this.state.creditCheckForm);
-  }
-
   onChange = (value, reference) => {
     this.setState({
       creditCheckForm: {
@@ -37,10 +31,14 @@ class CreditCheck extends Component {
     });
   }
 
+  handleSubmit = (e, history) => {
+    this.props.history.replace('/register-fund');
+  };
+
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <h2>Credit Check</h2>
           {this.props.inputs.map((input) => (
             <div key={input.reference}>
