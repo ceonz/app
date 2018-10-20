@@ -7,6 +7,7 @@ class CreditCheck extends Component {
       fundName: '',
       ownerName: '',
       ownerEmail: '',
+      fundDescription: '',
     }
   };
 
@@ -39,7 +40,7 @@ class CreditCheck extends Component {
           <label htmlFor="fundDescription">Fund Description</label>
           <Textarea
             id="fundDescription"
-            onChange={e => this.setState({ fundDescription: e.target.value })}
+            onChange={e => this.onChange(e.target.value, 'fundDescription')}
             value={this.state.fundDescription}
             required={true}
           />
