@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, Textarea } from 'evergreen-ui';
 
-class CreditCheck extends Component {
+class FundRegistration extends Component {
   state = {
     form: {
       fundName: '',
@@ -24,7 +24,7 @@ class CreditCheck extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <h2>Credit Check</h2>
+          <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
             <div>
               <label htmlFor={input.reference}>{input.label}</label>
@@ -44,14 +44,14 @@ class CreditCheck extends Component {
             value={this.state.fundDescription}
             required={true}
           />
-          <button type="submit">Submit Credit Check</button>
+          <button type="submit">Register Fund</button>
         </form>
       </div>
     );
   }
 }
 
-CreditCheck.defaultProps = {
+FundRegistration.defaultProps = {
   inputs: [
     {
       label: 'Fund Name',
@@ -71,4 +71,4 @@ CreditCheck.defaultProps = {
   ]
 };
 
-export default CreditCheck;
+export default FundRegistration;
