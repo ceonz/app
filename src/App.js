@@ -4,9 +4,6 @@ import Homepage from './components/Homepage';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Login from './components/Login';
-import Profile from './components/Profile';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
