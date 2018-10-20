@@ -10,6 +10,15 @@ class CreditCheck extends Component {
     }
   };
 
+  onChange = (value, reference) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [reference]: value,
+      },
+    });
+  }
+
   render() {
     return (
       <div>
@@ -20,9 +29,10 @@ class CreditCheck extends Component {
               <label htmlFor={input.reference}>{input.label}</label>
               <TextInput
                 id={input.reference}
-                value={this.state.form[input]}
+                value={this.state.form[input.reference]}
                 type={input.type}
                 required={true}
+                onChange={e => this.onChange(e.target.value, input.reference)}
               />
             </div>
           ))}
