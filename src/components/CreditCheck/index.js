@@ -36,9 +36,12 @@ class CreditCheck extends Component {
               />
             </div>
           ))}
-          <label htmlFor="fund-description">Fund Description</label>
+          <label htmlFor="fundDescription">Fund Description</label>
           <Textarea
-            id="fund-description"
+            id="fundDescription"
+            onChange={e => this.setState({ fundDescription: e.target.value })}
+            value={this.state.fundDescription}
+            required={true}
           />
           <button type="submit">Button</button>
         </form>
