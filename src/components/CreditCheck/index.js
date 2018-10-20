@@ -20,7 +20,7 @@ class CreditCheck extends Component {
               <label htmlFor={input.reference}>{input.label}</label>
               <TextInput
                 id={input.reference}
-                // value={this.state.form[input.reference]}
+                value={this.state.form[input]}
                 type={input.type}
                 required={true}
               />
