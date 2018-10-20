@@ -13,6 +13,21 @@ class CreditCheck extends Component {
     }
   };
 
+  saveCreditCheckForm = creditCheckForm => {
+    this.setState({
+      creditCheckForm: {
+        ...this.state.creditCheckForm,
+        ...creditCheckForm
+      }
+    });
+  }
+
+// WIP
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.saveCreditCheckForm(this.state.creditCheckForm);
+  }
+
   onChange = (value, reference) => {
     this.setState({
       creditCheckForm: {
