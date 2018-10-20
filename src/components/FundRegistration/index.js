@@ -20,10 +20,14 @@ class FundRegistration extends Component {
     });
   }
 
+  handleSubmit = (e, history) => {
+    this.props.history.replace('/fund-profile');
+  };
+
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
             <div key={input.reference}>
