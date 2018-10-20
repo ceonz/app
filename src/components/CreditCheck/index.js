@@ -25,7 +25,7 @@ class CreditCheck extends Component {
   render() {
     return (
       <div>
-        <creditCheckForm onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <h2>Credit Check</h2>
           {this.props.inputs.map((input) => (
             <div>
@@ -40,7 +40,7 @@ class CreditCheck extends Component {
             </div>
           ))}
           <button type="submit">Submit Credit Check</button>
-        </creditCheckForm>
+        </form>
       </div>
     );
   }

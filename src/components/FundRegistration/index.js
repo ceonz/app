@@ -23,7 +23,7 @@ class FundRegistration extends Component {
   render() {
     return (
       <div>
-        <fundRegistrationForm onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
             <div>
@@ -45,7 +45,7 @@ class FundRegistration extends Component {
             required={true}
           />
           <button type="submit">Register Fund</button>
-        </fundRegistrationForm>
+        </form>
       </div>
     );
   }
