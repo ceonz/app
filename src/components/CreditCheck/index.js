@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput } from 'evergreen-ui';
+import { TextInput, Textarea } from 'evergreen-ui';
 
 class CreditCheck extends Component {
   state = {
@@ -36,6 +36,10 @@ class CreditCheck extends Component {
               />
             </div>
           ))}
+          <label htmlFor="fund-description">Fund Description</label>
+          <Textarea
+            id="fund-description"
+          />
           <button type="submit">Button</button>
         </form>
       </div>
