@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TextInputField } from 'evergreen-ui';
 
 class CreditCheck extends Component {
   state = {
@@ -14,7 +15,14 @@ class CreditCheck extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <h2>Credit Check</h2>
-          <input></input>
+          <TextInputField
+            id='testid'
+            value='testvalue'
+            onChange='onchange function for now'
+            type='type'
+            required="required"
+            label="It works!"
+          />
           <button type="submit">Button</button>
         </form>
       </div>
