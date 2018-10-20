@@ -3,7 +3,7 @@ import { TextInput, Textarea } from 'evergreen-ui';
 
 class FundRegistration extends Component {
   state = {
-    form: {
+    fundRegistrationForm: {
       fundName: '',
       ownerName: '',
       ownerEmail: '',
@@ -13,8 +13,8 @@ class FundRegistration extends Component {
 
   onChange = (value, reference) => {
     this.setState({
-      form: {
-        ...this.state.form,
+      fundRegistrationForm: {
+        ...this.state.fundRegistrationForm,
         [reference]: value,
       },
     });
@@ -23,14 +23,14 @@ class FundRegistration extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <fundRegistrationForm onSubmit={this.onSubmit}>
           <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
             <div>
               <label htmlFor={input.reference}>{input.label}</label>
               <TextInput
                 id={input.reference}
-                value={this.state.form[input.reference]}
+                value={this.state.fundRegistrationForm[input.reference]}
                 type={input.type}
                 required={true}
                 onChange={e => this.onChange(e.target.value, input.reference)}
@@ -45,7 +45,7 @@ class FundRegistration extends Component {
             required={true}
           />
           <button type="submit">Register Fund</button>
-        </form>
+        </fundRegistrationForm>
       </div>
     );
   }
