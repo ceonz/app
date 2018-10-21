@@ -7,8 +7,9 @@ class TransferFunds extends Component {
     fundRegistrationForm: {
       fund_name: '',
       fund_transfer_amount: '',
-      fund_transfer_description: ''
-    }
+      fund_transfer_description: '',
+      fund_transfer_to: '',
+    },
   };
 
   onChange = (value, reference) => {
@@ -18,16 +19,17 @@ class TransferFunds extends Component {
         [reference]: value,
       },
     });
-  }
+  };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     const transfer = {
       fundId: this.props.fundId,
       transfer_amount: this.state.fundRegistrationForm.fund_transfer_amount,
       transfer_description: this.state.fundRegistrationForm.fund_transfer_description,
-    }
+      transfer_to: this.state.fundRegistrationForm.fund_transfer_to,
+    };
 
     const addTransfer = firebase
       .addToCollection('transfers', transfer)
@@ -38,8 +40,9 @@ class TransferFunds extends Component {
           fundRegistrationForm: {
             fund_transfer_amount: '',
             fund_transfer_description: '',
-          }
-        })
+            fund_transfer_to: '',
+          },
+        });
 
         // close panel
         // this.props.closeSidePanel();
@@ -58,6 +61,8 @@ class TransferFunds extends Component {
               <label htmlFor={input.reference}>{input.label}</label>
               <TextInput id={input.reference} value={this.state.fundRegistrationForm[input.reference]} type={input.type} required={true} onChange={e => this.onChange(e.target.value, input.reference)} />
             </div>)}
+          <label htmlFor="fund_transfer_to">Transfer To</label>
+          <TextInput id="fund_transfer_to" placeholder="VMT200911026070" onChange={e => this.onChange(e.target.value, 'fund_transfer_to')} value={this.state.fund_transfer_description} required={true} />
           <label htmlFor="fund_transfer_description">
             Transfer Description
           </label>
