@@ -43,7 +43,7 @@ class FundRegistration extends Component {
           fund_description: '',
         });
 
-        this.props.history.replace(`/fund-profile/${newFundId}`);
+        this.props.history.replace(`/funds/${newFundId}`);
       })
       .catch(err => {
         console.log(err);

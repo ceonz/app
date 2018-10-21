@@ -32,7 +32,7 @@ class CreditCheck extends Component {
   }
 
   handleSubmit = (e, history) => {
-    this.props.history.replace('/register-fund');
+    this.props.history.replace('/register');
   };
 
   render() {
