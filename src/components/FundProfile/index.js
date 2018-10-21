@@ -26,7 +26,8 @@ class FundProfile extends Component {
     isLoggedIn: true,
     isSuccessful: true,
     showTransferPanel: false,
-  }
+    selectedTabIndex: 0,
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -37,17 +38,38 @@ class FundProfile extends Component {
       then(data) {
         this.setState({ fund_id: id, ...data });
         //do something with the data
-      }, onFailure(err) {
+      },
+      onFailure(err) {
         //handle error
-      }});
+      },
+    });
+
+    firebase
+      .get('donations', {
+        context: this,
+        query: ref => ref.where('fundId', '==', id),
+      })
+      .then(data => {
+        console.log(data)
+        if (data) {
+          this.setState({
+            donations: data,
+          })
+        }
+        //do something with data
+      })
+      .catch(err => {
+        //handle error
+      });
   }
 
   transferFunds = () => {
-    this.setState({ showTransferPanel: true })
+    this.setState({ showTransferPanel: true });
     //this.props.history.replace('/transfer-funds');
-  }
+  };
 
   render() {
+    const tabList = ['Donations', 'Transfers'];
     return <div>
         <Alert intent="success" title="Congratulations! You have successfully created your community's fund" marginBottom={32} style={{ display: this.state.isSuccessful ? 'flex' : 'none' }} />
         <Pane>
@@ -59,7 +81,9 @@ class FundProfile extends Component {
             )}>
           <Pane zIndex={1} flexShrink={0} elevation={0} backgroundColor="white">
             <Pane padding={16}>
-              <Heading size={600}>Transfer Funds from {this.state.fund_name}</Heading>
+              <Heading size={600}>
+                Transfer Funds from {this.state.fund_name}
+              </Heading>
             </Pane>
           </Pane>
           <Pane flex="1" overflowY="scroll" background="tint1" padding={16}>
@@ -68,45 +92,66 @@ class FundProfile extends Component {
             </Card>
           </Pane>
         </SideSheet>
-        {this.state.isLoggedIn && <Button
-            justifyContent="center"
-            height={48}
-            marginBottom={`15px`}
-            iconBefore="arrows-horizontal"
-            onClick={this.transferFunds}
-            className="submit-button"
-          >
+        {this.state.isLoggedIn && <Button justifyContent="center" height={48} marginBottom={`15px`} iconBefore="arrows-horizontal" onClick={this.transferFunds} className="submit-button">
             Transfer Funds
           </Button>}
-        <TabNavigation>
-          {['Fund Information', 'Donations', 'Transfers'].map(
-            (tab, index) => (
-              <Tab
-                key={tab}
-                is="a"
-                href="#"
-                id={tab}
-                isSelected={index === 0}
-              >
-                {tab}
-              </Tab>
-            )
-          )}
+        <Pane flex="1" background="tint1" padding={16}>
+          <Card backgroundColor="white" elevation={0}>
+            <Table>
+              <Table.Body>
+                {this.props.listItems.map(listItem => (
+                  <Table.Row className="fund-profile" height={60}>
+                    <Table.TextCell className="fund-profile-cell">
+                      <p>
+                        <label htmlFor={listItem.reference}>
+                          <strong>{`${listItem.label}: `}</strong>
+                        </label>
+                        {this.state[listItem.reference]}
+                      </p>
+                    </Table.TextCell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          </Card>
+        </Pane>
+        <TabNavigation marginTop={10}>
+          {tabList.map((tab, index) => (
+            <Tab
+              key={tab}
+              is="a"
+              href="#"
+              id={tab}
+              isSelected={this.state.selectedTabIndex === index}
+              onClick={() => this.setState({ selectedTabIndex: index })}
+              aria-controls={`panel-${tab}`}
+            >
+              {tab}
+            </Tab>
+          ))}
         </TabNavigation>
-        <Table>
-          <Table.Body>
-            {this.props.listItems.map(listItem => (
-              <Table.Row className="fund-profile" height={60}>
-                <Table.TextCell className="fund-profile-cell">
-                  <label htmlFor={listItem.reference}>{`${
-                    listItem.label
-                  }: `}</label>
-                  {this.state[listItem.reference]}
-                </Table.TextCell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+        <Pane padding={16} flex="1">
+          {tabList.map((tab, index) => (
+            <Pane
+              key={tab}
+              id={`panel-${tab}`}
+              role="tabpanel"
+              aria-labelledby={tab}
+              aria-hidden={index !== this.state.selectedTabIndex}
+              display={
+                index === this.state.selectedTabIndex ? 'block' : 'none'
+              }
+            >
+              <ul>
+                {this.state.donations &&
+                  this.state.donations.map((donation, index) => {
+                  return <li key={index}>{donation.donation_amount}</li>;
+            })}
+              </ul>
+              <Paragraph>Panel {tab}</Paragraph>
+            </Pane>
+          ))}
+        </Pane>
       </div>;
   }
 }
