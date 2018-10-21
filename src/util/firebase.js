@@ -1,7 +1,7 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import Rebase from 're-base';
 require('firebase/firestore');
-require('dotenv');
+require('dotenv').config();
 
 const {
   FIREBASE_apiKey,
@@ -9,25 +9,26 @@ const {
   FIREBASE_databaseURL,
   FIREBASE_projectId,
   FIREBASE_storageBucket,
-  FIREBASE_messagingSenderId
+  FIREBASE_messagingSenderId,
 } = process.env;
 
 const config = {
-  apiKey: process.env.FIREBASE_apiKey,
-  authDomain: `${FIREBASE_authDomain}`,
-  databaseURL: `${FIREBASE_databaseURL}`,
-  projectId: `${FIREBASE_projectId}`,
-  storageBucket: `${FIREBASE_storageBucket}`,
+  apiKey: FIREBASE_apiKey,
+  authDomain: FIREBASE_authDomain,
+  databaseURL: FIREBASE_databaseURL,
+  projectId: FIREBASE_projectId,
+  storageBucket: FIREBASE_storageBucket,
   messagingSenderId: FIREBASE_messagingSenderId,
 };
 
-const app = firebase.initializeApp(config);
+console.log(config)
 
-console.log(config);
-
-let firestore = app.firestore();
 const settings = { timestampsInSnapshots: true };
+
+const app = firebase.initializeApp(config);
+let firestore = app.firestore();
 firestore.settings(settings);
 
 const base = Rebase.createClass(firestore);
+
 export default base;
