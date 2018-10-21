@@ -20,6 +20,7 @@ class Homepage extends Component {
             marginBottom={`15px`}
             iconBefore="bank-account"
             onClick={this.handleCreateFundClick}
+            className="submit-button"
           >
             Start Your Community Fund
           </Button>
@@ -29,6 +30,7 @@ class Homepage extends Component {
             marginBottom={`15px`}
             iconBefore="th-list"
             onClick={this.handleListFundsClick}
+            className="submit-button"
           >
             See List of Community Funds
           </Button>
