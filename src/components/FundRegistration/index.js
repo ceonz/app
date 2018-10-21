@@ -3,6 +3,7 @@ import { FormField, TextInput, Textarea, Button } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 import FormSpinner from '../FormSpinner';
 import FormSteps from '../FormSteps';
+import {Icon} from 'evergreen-ui';
 
 class FundRegistration extends Component {
   state = {
@@ -80,6 +81,7 @@ class FundRegistration extends Component {
                   onChange={e =>
                     this.onChange(e.target.value, input.reference)
                   }
+                  placeholder={input.placeholder || ''}
                 />
               </FormField>
             </React.Fragment>
