@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Icon } from 'evergreen-ui';
+import { Table, Icon, IconButton } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 class FundList extends Component {
   state = {
@@ -26,22 +26,29 @@ class FundList extends Component {
 
   render() {
     return (
-      <Table>
-        <Table.Body>
-          {this.state.funds && this.state.funds.map((fund) => (
-            <Table.Row className="funds-list" height={"auto"}>
-              <Table.TextCell>
-                <h1 className="funds-list-name">{fund.fund_name}</h1>
-                <div className="funds-list-location">
+      <div className="funds-list-container">
+        <div className="funds-list-header">
+          <h1>Funds</h1>
+          <IconButton appearance="minimal" icon="plus" iconSize={30} />
+        </div>
+        <table className="funds-list">
+          <tbody>
+            {this.state.funds && this.state.funds.map((fund) => (
+              <tr>
+                <td className="funds-list-name-balance">
+                  <h2>Awesome Fund name</h2>
+                  <p>350,000</p>
+                </td>
+                <td className="funds-list-location">
                   <Icon className="location-icon" icon="map-marker" />
-                  <span>{fund.fund_location}</span>
-                </div>
-              </Table.TextCell>
-              <Table.TextCell isNumber className="funds-list-balance">{fund.fund_balance}</Table.TextCell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
+                  <p>America</p>
+                </td>
+              <hr class="table-divider"/>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

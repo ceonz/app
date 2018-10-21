@@ -156,17 +156,43 @@ button {
 
 // Funds List
 
-.funds-list {
+.funds-list-container {
+  width: 100%;
   padding-left: $indent__m;
   padding-right: $indent__m;
+  box-sizing: border-box;
+}
 
-  &-name,
-  &-location {
-    text-align: left;
+.funds-list {
+  width: 100%;
+
+  &-name-balance {
+    display: flex;
+    justify-content: space-between;
   }
 
-  &-balance {
-    text-align: right;
+  &-location {
+    display: flex;
+
+    .location-icon {
+      margin-right: $indent__s;
+    }
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .table-divider {
+    height: 2px;
+    border: none;
+    background-color:$dark-blue;
+  }
+
+  td {
+    align-items: center;
   }
 }
 
