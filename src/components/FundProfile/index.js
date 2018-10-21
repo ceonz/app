@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Failure from '../Banners/Failure';
 import Success from '../Banners/Success';
 import firebase from '../../util/firebase';
-import { Table, Icon } from 'evergreen-ui';
+import { Table, Icon, Alert } from 'evergreen-ui';
 
 class FundProfile extends Component {
   state = {
@@ -11,6 +11,7 @@ class FundProfile extends Component {
     fund_owner: '',
     fund_description: '',
     isLoggedIn: true,
+    isSuccessful: true
   }
 
   componentDidMount() {
@@ -34,6 +35,12 @@ class FundProfile extends Component {
   render() {
     return (
     <div>
+      <Alert
+          intent="success"
+          title="You've succesfully created yur fund'"
+          marginBottom={32}
+          style={{display:this.state.isSuccessful ? "block" : "none"}}
+        />
       <h2>{this.state.fund_name}</h2>
         {this.state.isLoggedIn ? 
       <button onClick={this.transferFunds}>Transfer Funds</button> : ''}
