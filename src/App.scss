@@ -160,6 +160,10 @@ button {
   padding-left: $indent__m;
   padding-right: $indent__m;
   box-sizing: border-box;
+
+  .add-button {
+    float: right !important;
+  }
 }
 
 .funds-list {
@@ -197,9 +201,7 @@ button {
   }
 
   &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    text-align: center;
   }
 
   .table-divider {
