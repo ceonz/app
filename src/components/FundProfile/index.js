@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Failure from '../Banners/Failure';
 import Success from '../Banners/Success';
 import firebase from '../../util/firebase';
+import { Table, Icon } from 'evergreen-ui';
 
 class FundProfile extends Component {
   state = {
@@ -24,13 +25,20 @@ class FundProfile extends Component {
   }
 
   render() {
-    return <div>
-        <h2>Fund Name</h2>
-        {this.props.listItems.map(listItem => <div key={listItem.reference}>
-            <label htmlFor={listItem.reference}>{`${listItem.label}: `}</label>
-            <p>{this.state[listItem.reference] || listItem.value}</p>
-          </div>)}
-      </div>;
+    return (
+      <Table>
+        <Table.Body>
+          {this.props.listItems.map((listItem) => (
+            <Table.Row className="fund-profile" height={60}>
+              <Table.TextCell className="fund-profile-cell">
+                <label htmlFor={listItem.reference}>{`${listItem.label}: `}</label>
+                {this.state[listItem.reference]}
+              </Table.TextCell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    );
   }
 }
 
