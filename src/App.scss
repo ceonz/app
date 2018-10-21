@@ -169,3 +169,15 @@ button {
     text-align: right;
   }
 }
+
+.fund-profile {
+  text-align: left;
+  display: block;
+  position: relative;
+
+  &-cell {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
