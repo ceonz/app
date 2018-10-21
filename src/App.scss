@@ -63,6 +63,10 @@ $screen__xl: 1440px;
   padding: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 label {
   margin-right: $indent__s;
 }
