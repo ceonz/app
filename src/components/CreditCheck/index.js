@@ -6,12 +6,12 @@ import FormSteps from '../FormSteps';
 class CreditCheck extends Component {
   state = {
     creditCheckForm: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      ssn: '',
-      ccNumber: '',
+      firstName: 'Something',
+      lastName: 'Digital',
+      email: 'sdinteractive@somethingdigital.com',
+      phone: '212-123-1234',
+      ssn: '123-45-6789',
+      ccNumber: '4111111111111111',
     },
     isLoading: false,
   };
@@ -101,12 +101,12 @@ CreditCheck.defaultProps = {
     {
       label: 'Phone',
       reference: 'phone',
-      type: 'number',
+      type: 'text',
     },
     {
       label: 'Social Security Number',
       reference: 'ssn',
-      type: 'number',
+      type: 'text',
     },
     {
       label: 'Credit Card Number',
