@@ -43,6 +43,24 @@ class FundProfile extends Component {
         //handle error
       },
     });
+
+    firebase
+      .get('donations', {
+        context: this,
+        query: ref => ref.where('fundId', '==', id),
+      })
+      .then(data => {
+        console.log(data)
+        if (data) {
+          this.setState({
+            donations: data,
+          })
+        }
+        //do something with data
+      })
+      .catch(err => {
+        //handle error
+      });
   }
 
   transferFunds = () => {
@@ -124,6 +142,12 @@ class FundProfile extends Component {
                 index === this.state.selectedTabIndex ? 'block' : 'none'
               }
             >
+              <ul>
+                {this.state.donations &&
+                  this.state.donations.map((donation, index) => {
+                  return <li key={index}>{donation.donation_amount}</li>;
+            })}
+              </ul>
               <Paragraph>Panel {tab}</Paragraph>
             </Pane>
           ))}
