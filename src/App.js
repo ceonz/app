@@ -21,6 +21,7 @@ class App extends Component {
           <Route exact path="/credit-check" component={CreditCheck} />
           <Route exact path="/register-fund" component={FundRegistration} />
           <Route exact path="/fund-profile/:id" component={FundProfile} />
+          <Route exact path="/fund-list" component={FundList} />
           <ul>
             <li>
               <Link to={`/home`}>Home</Link>
@@ -32,7 +33,10 @@ class App extends Component {
               <Link to={`/register-fund`}>Register Fund</Link>
             </li>
             <li>
-              <Link to={`/fund-profile`}>Register Fund</Link>
+              <Link to={`/fund-profile`}>Fund Profile</Link>
+            </li>
+            <li>
+              <Link to={`/fund-list`}>Fund List</Link>
             </li>
           </ul>
         </div>
