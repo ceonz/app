@@ -164,6 +164,11 @@ button {
   &-name-balance {
     display: flex;
     justify-content: space-between;
+
+    p {
+      font-size: 30px;
+      font-weight: bold;
+    }
   }
 
   &-location {

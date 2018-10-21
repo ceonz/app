@@ -37,7 +37,7 @@ class FundProfile extends Component {
     <div>
       <Alert
           intent="success"
-          title="You've succesfully created yur fund'"
+          title="Congratulations! You have successfully created your fund"
           marginBottom={32}
           style={{display:this.state.isSuccessful ? "block" : "none"}}
         />
