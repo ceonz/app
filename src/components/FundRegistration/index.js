@@ -86,8 +86,9 @@ class FundRegistration extends Component {
               </FormField>
             </React.Fragment>
           ))}
-          <label htmlFor="fund_description">Fund Description</label>
-          <Textarea id="fund_description" onChange={e => this.onChange(e.target.value, 'fund_description')} value={this.state.fund_description} required={true} />
+        <FormField className="fund_description" label='Fund Description'>
+          <Textarea onChange={e => this.onChange(e.target.value, 'fund_description')} value={this.state.fund_description} required={true} />
+        </FormField>
         <Button
           justifyContent="center"
           height={48}
