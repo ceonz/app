@@ -6,10 +6,10 @@ import FormSteps from '../FormSteps';
 class CreditCheck extends Component {
   state = {
     creditCheckForm: {
-      firstName: 'Something',
-      lastName: 'Digital',
-      email: 'sdinteractive@somethingdigital.com',
-      phone: '212-123-1234',
+      firstName: 'Ana',
+      lastName: 'Acosta',
+      email: 'aacosta@gmail.com',
+      phone: '+1-212-123-1234',
       ssn: '123-45-6789',
       ccNumber: '4111111111111111',
     },
