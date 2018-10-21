@@ -12,8 +12,9 @@ class Homepage extends Component {
           className="home-avatar"
         />
         <div className="homepage-buttons">
-          <button type="submit">Create A Fund</button>
-          <button type="submit">See List of Funds</button>
+          <button type="submit"><a href="/credit-check">Start Credit Check</a></button>
+          <button type="submit"><a href="/register-fund">Create A Fund</a></button>
+          <button type="submit"><a href="/fund-profile">See List of Funds</a></button>
         </div>
         <div className="credits">
           <h3>Created by:</h3>
