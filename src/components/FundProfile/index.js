@@ -30,19 +30,17 @@ class FundProfile extends Component {
     this.props.history.replace('/transfer-funds');
   }
 
-
-
   render() {
     return (
     <div>
       <Alert
           intent="success"
-          title="Congratulations! You have successfully created your fund"
+          title="Congratulations! You have successfully created your community's fund"
           marginBottom={32}
-          style={{display:this.state.isSuccessful ? "block" : "none"}}
+          style={{display:this.state.isSuccessful ? "flex" : "none"}}
         />
       <h2>{this.state.fund_name}</h2>
-        {this.state.isLoggedIn ? 
+        {this.state.isLoggedIn ?
       <button onClick={this.transferFunds}>Transfer Funds</button> : ''}
       <TabNavigation>
   {['Fund Information', 'Donations', 'Transfers'].map((tab, index) => (
