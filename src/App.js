@@ -19,9 +19,9 @@ class App extends Component {
           </React.Fragment>
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/credit-check" component={CreditCheck} />
-          <Route exact path="/register-fund" component={FundRegistration} />
-          <Route exact path="/fund-profile/:id" component={FundProfile} />
-          <Route exact path="/fund-list" component={FundList} />
+          <Route exact path="/register" component={FundRegistration} />
+          <Route exact path="/funds/:id" component={FundProfile} />
+          <Route exact path="/funds" component={FundList} />
           <ul>
             <li>
               <Link to={`/home`}>Home</Link>
@@ -30,13 +30,13 @@ class App extends Component {
               <Link to={`/credit-check`}>Credit Check</Link>
             </li>
             <li>
-              <Link to={`/register-fund`}>Register Fund</Link>
+              <Link to={`/register`}>Register Fund</Link>
             </li>
             <li>
-              <Link to={`/fund-profile`}>Fund Profile</Link>
+              <Link to={`/funds/HMWlsciDaGASrccRLu2a`}>Fund Profile</Link>
             </li>
             <li>
-              <Link to={`/fund-list`}>Fund List</Link>
+              <Link to={`/funds`}>Fund List</Link>
             </li>
           </ul>
         </div>
