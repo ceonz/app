@@ -152,3 +152,20 @@ button {
     cursor: pointer;
   }
 }
+
+
+// Funds List
+
+.funds-list {
+  padding-left: $indent__m;
+  padding-right: $indent__m;
+
+  &-name,
+  &-location {
+    text-align: left;
+  }
+
+  &-balance {
+    text-align: right;
+  }
+}

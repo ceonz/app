@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import {Table} from 'evergreen-ui';
+import { Table, Icon } from 'evergreen-ui';
 class FundList extends Component {
 
   render() {
     return (
       <Table>
-        <Table.Head>
-          <Table.TextHeaderCell>Fund Name</Table.TextHeaderCell>
-          <Table.TextHeaderCell>Fund Location</Table.TextHeaderCell>
-          <Table.TextHeaderCell>Fund Balance</Table.TextHeaderCell>
-        </Table.Head>
-        <Table.Body height={240}>
+        <Table.Body>
           {this.props.listOfFunds.map((individualFund) => (
-            <Table.Row key={individualFund.fund_paymentToken}>
-              <Table.TextCell>{individualFund.fund_name}</Table.TextCell>
-              <Table.TextCell>{individualFund.fund_location}</Table.TextCell>
-              <Table.TextCell isNumber>{individualFund.fund_balance}</Table.TextCell>
+            <Table.Row className="funds-list" height={"auto"} key={individualFund.fund_paymentToken}>
+              <Table.TextCell>
+                <h1 className="funds-list-name">{individualFund.fund_name}</h1>
+                <div className="funds-list-location">
+                  <Icon className="location-icon" icon="map-marker" />
+                  <span>{individualFund.fund_location}</span>
+                </div>
+              </Table.TextCell>
+              <Table.TextCell isNumber className="funds-list-balance">{individualFund.fund_balance}</Table.TextCell>
             </Table.Row>
           ))}
         </Table.Body>
