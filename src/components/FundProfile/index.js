@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import Failure from '../Banners/Failure';
 import Success from '../Banners/Success';
 import firebase from '../../util/firebase';
-import { Table, Icon, Alert, Tab, TabNavigation, Button } from 'evergreen-ui';
+import {
+  Table,
+  Icon,
+  Alert,
+  Heading,
+  Card,
+  Pane,
+  Paragraph,
+  SideSheet,
+  Tab,
+  TabNavigation,
+  Button
+} from 'evergreen-ui';
+import TransferFunds from '../TransferFunds/index';
 
 class FundProfile extends Component {
   state = {
@@ -11,11 +24,14 @@ class FundProfile extends Component {
     fund_owner: '',
     fund_description: '',
     isLoggedIn: true,
-    isSuccessful: true
+    isSuccessful: true,
+    showTransferPanel: false,
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    this.setState({ fundId: id });
+
     firebase.listenToDoc(`funds/${id}`, {
       context: this,
       then(data) {
@@ -27,52 +43,71 @@ class FundProfile extends Component {
   }
 
   transferFunds = () => {
-    this.props.history.replace('/transfer-funds');
+    this.setState({ showTransferPanel: true })
+    //this.props.history.replace('/transfer-funds');
   }
 
   render() {
-    return (
-    <div>
-      <Alert
-          intent="success"
-          title="Congratulations! You have successfully created your community's fund"
-          marginBottom={32}
-          style={{display:this.state.isSuccessful ? "flex" : "none"}}
-        />
-      <h2>{this.state.fund_name}</h2>
-        {this.state.isLoggedIn ?
-          <Button
+    return <div>
+        <Alert intent="success" title="Congratulations! You have successfully created your community's fund" marginBottom={32} style={{ display: this.state.isSuccessful ? 'flex' : 'none' }} />
+        <Pane>
+          <h2>{this.state.fund_name}</h2>
+          <h3>${this.state.fund_balance || '0.00'}</h3>
+        </Pane>
+        <SideSheet isShown={this.state.showTransferPanel} onCloseComplete={() => this.setState(
+              { showTransferPanel: false }
+            )}>
+          <Pane zIndex={1} flexShrink={0} elevation={0} backgroundColor="white">
+            <Pane padding={16}>
+              <Heading size={600}>Transfer Funds from {this.state.fund_name}</Heading>
+            </Pane>
+          </Pane>
+          <Pane flex="1" overflowY="scroll" background="tint1" padding={16}>
+            <Card backgroundColor="white" elevation={0} display="flex" alignItems="center" justifyContent="center" padding={16}>
+              <TransferFunds fundId={this.state.fundId} name={this.state.fund_name} />
+            </Card>
+          </Pane>
+        </SideSheet>
+        {this.state.isLoggedIn && <Button
             justifyContent="center"
             height={48}
             marginBottom={`15px`}
             iconBefore="arrows-horizontal"
             onClick={this.transferFunds}
-            className="submit-button" 
+            className="submit-button"
           >
             Transfer Funds
-          </Button>
-          : ''}
-      <TabNavigation>
-  {['Fund Information', 'Donations', 'Transfers'].map((tab, index) => (
-    <Tab key={tab} is="a" href="#" id={tab} isSelected={index === 0}>
-      {tab}
-    </Tab>
-  ))}
-</TabNavigation>
-      <Table>
-        <Table.Body>
-          {this.props.listItems.map((listItem) => (
-            <Table.Row className="fund-profile" height={60}>
-              <Table.TextCell className="fund-profile-cell">
-                <label htmlFor={listItem.reference}>{`${listItem.label}: `}</label>
-                {this.state[listItem.reference]}
-              </Table.TextCell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-      </div>
-    );
+          </Button>}
+        <TabNavigation>
+          {['Fund Information', 'Donations', 'Transfers'].map(
+            (tab, index) => (
+              <Tab
+                key={tab}
+                is="a"
+                href="#"
+                id={tab}
+                isSelected={index === 0}
+              >
+                {tab}
+              </Tab>
+            )
+          )}
+        </TabNavigation>
+        <Table>
+          <Table.Body>
+            {this.props.listItems.map(listItem => (
+              <Table.Row className="fund-profile" height={60}>
+                <Table.TextCell className="fund-profile-cell">
+                  <label htmlFor={listItem.reference}>{`${
+                    listItem.label
+                  }: `}</label>
+                  {this.state[listItem.reference]}
+                </Table.TextCell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>;
   }
 }
 
