@@ -267,7 +267,8 @@ form {
   margin-bottom: $indent__m;
 }
 
-.donations-list {
+.donations-list,
+.transfers-list {
   text-align: left;
   font-size: 21px;
 
@@ -278,6 +279,11 @@ form {
 
   .donation-amount {
     color: green;
+    font-weight: bold;
+  }
+
+  .transfer-amount {
+    color: red;
     font-weight: bold;
   }
 }
