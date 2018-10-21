@@ -33,7 +33,7 @@ class FundList extends Component {
             {this.state.funds && this.state.funds.map((fund, index) => (
               <tr key={index}>
                 <td className="funds-list-name-balance">
-                  <h2>{fund.fund_location}</h2>
+                  <h2>{fund.fund_name}</h2>
                   <p>{`$${fund.fund_balance || '0.00'}`}</p>
                 </td>
                 <td className="funds-list-location">
