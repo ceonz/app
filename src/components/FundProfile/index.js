@@ -142,11 +142,13 @@ class FundProfile extends Component {
                 index === this.state.selectedTabIndex ? 'block' : 'none'
               }
             >
-              <ul>
+              <ul className="donations-list">
                 {this.state.donations &&
                   this.state.donations.map((donation, index) => {
-                  return <li key={index}>{donation.donation_amount}</li>;
-            })}
+                  return (
+                    <li key={index}><span>{`${donation.donation_merchant_name}: `}</span><span className="donation-amount">{`+ $${donation.donation_amount}`}</span></li>
+                  );
+                })}
               </ul>
               <Paragraph>Panel {tab}</Paragraph>
             </Pane>
