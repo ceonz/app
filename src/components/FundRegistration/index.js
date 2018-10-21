@@ -3,6 +3,7 @@ import { FormField, TextInput, Textarea } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 import FormSpinner from '../FormSpinner';
 import FormSteps from '../FormSteps';
+import {Icon} from 'evergreen-ui';
 
 class FundRegistration extends Component {
   state = {
@@ -87,7 +88,10 @@ class FundRegistration extends Component {
           ))}
           <label htmlFor="fund_description">Fund Description</label>
           <Textarea id="fund_description" onChange={e => this.onChange(e.target.value, 'fund_description')} value={this.state.fund_description} required={true} />
-          <button type="submit">Register Fund</button>
+          <button type="submit">
+            Start Your Community Fund
+            <Icon icon="arrow-right" marginLeft={`10px`} />
+          </button>
         </form>
       </>;
     return <div>
