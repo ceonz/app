@@ -8,13 +8,14 @@ import {Icon} from 'evergreen-ui';
 class FundRegistration extends Component {
   state = {
     fundRegistrationForm: {
-      fund_name: '',
-      fund_location: '',
-      fund_owner: '',
-      fund_email: '',
-      fund_description: '',
-      fund_password: '',
+      fund_name: 'Funds for Female Farmers',
+      fund_location: 'Nairobi, Kenya',
+      fund_owner: 'Something Digital',
+      fund_email: 'sdinteractive@somethingdigital.com',
+      fund_password: 'password1',
+      fund_description: 'test',
     },
+    fund_description: 'Funds for Female Farmers helps disadvantaged female farmers in Nairobi, Kenya purchase more and better equipment after a natural disaster, leading them to grow more, sell more and sell for more. With our help, rural Nairobian families will increase their incomes while also helping their community members and protecting their local environment for generations to come.',
     isLoading: false
   };
 
