@@ -1,0 +1,76 @@
+$light-blue: #3ebac4; // Visa Money '20/20' color
+$dark-blue: #252666; // Visa 'Money' 20/20 color
+$white: #fff;
+$indent__xs: 5px;
+$indent__s: 10px;
+$indent__m: 25px;
+$indent__l: 30px;
+$indent__xl: 40px;
+
+.App {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  margin-right: $indent__s;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.homepage {
+  background-color: $dark-blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 600px;
+  height: 100%;
+  justify-content: center;
+
+  button {
+    background-color: $white;
+    color: $dark-blue;
+  }
+
+  button:hover,
+  button:focus {
+    background-color: $light-blue;
+  }
+
+  .home-avatar {
+    margin-bottom: $indent__m;
+  }
+}
+
+.credits {
+  color: $white;
+  text-align: center;
+
+  li {
+    padding: $indent__xs 0;
+  }
+}
+
+button {
+  max-width: 460px;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  min-height: 50px;
+  border: 0;
+  border-radius: 5px;
+  background-color: $light-blue;
+  color: $dark-blue;
+
+  &:hover,
+  &:focus {
+    background-color: $dark-blue;
+    color: $white;
+    cursor: pointer;
+  }
+}
