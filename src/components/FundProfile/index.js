@@ -26,7 +26,7 @@ class FundProfile extends Component {
     isLoggedIn: true,
     isSuccessful: true,
     showTransferPanel: false,
-    selectedTabIndex: 0,
+    selectedTabIndex: 0, 
   };
 
   componentDidMount() {
