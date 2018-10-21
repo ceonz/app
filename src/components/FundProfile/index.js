@@ -10,6 +10,7 @@ class FundProfile extends Component {
     fund_balance: '',
     fund_owner: '',
     fund_description: '',
+    isLoggedIn: true,
   }
 
   componentDidMount() {
@@ -26,6 +27,14 @@ class FundProfile extends Component {
 
   render() {
     return (
+    <div>
+      <h2>Fund Name</h2>
+      {this.props.listItems.map(listItem => <div key={listItem.reference}>
+          <label htmlFor={listItem.reference}>{`${listItem.label}: `}</label>
+          <p>{this.state[listItem.reference] || listItem.value}</p>
+        </div>)}
+        {this.state.isLoggedIn ? 
+      <button onClick={this.transferFunds}>Transfer Funds</button> : ''}
       <Table>
         <Table.Body>
           {this.props.listItems.map((listItem) => (
@@ -38,6 +47,7 @@ class FundProfile extends Component {
           ))}
         </Table.Body>
       </Table>
+      </div>
     );
   }
 }

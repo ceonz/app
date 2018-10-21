@@ -11,6 +11,7 @@ class FundRegistration extends Component {
       fund_owner: '',
       fund_email: '',
       fund_description: '',
+      fund_password: '',
     }
   };
 
@@ -32,6 +33,7 @@ class FundRegistration extends Component {
       fund_owner: this.state.fundRegistrationForm.fund_owner,
       fund_email: this.state.fundRegistrationForm.fund_email,
       fund_description: this.state.fundRegistrationForm.fund_description,
+      fund_password: this.state.fundRegistrationForm.fund_password
     }
 
     const addFund = firebase
@@ -45,6 +47,7 @@ class FundRegistration extends Component {
           fund_owner: '',
           fund_email: '',
           fund_description: '',
+          fund_password: '',
         });
 
         this.props.history.replace(`/funds/${newFundId}`);
@@ -106,6 +109,11 @@ FundRegistration.defaultProps = {
       label: 'Owner Email',
       reference: 'fund_email',
       type: 'email',
+    },
+    {
+      label: 'Password',
+      reference: 'fund_password',
+      type: 'text',
     },
   ]
 };
