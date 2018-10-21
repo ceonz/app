@@ -84,9 +84,10 @@ ul {
     color: $dark-blue;
   }
 
-  button:hover,
-  button:focus {
-    background-color: $light-blue;
+  button {
+    @include hover {
+      background-color: $light-blue;
+    }
   }
 
   .home-avatar {
@@ -115,8 +116,7 @@ button {
   background-color: $light-blue;
   color: $dark-blue;
 
-  &:hover,
-  &:focus {
+  @include hover {
     background-color: $dark-blue;
     color: $white;
     cursor: pointer;
