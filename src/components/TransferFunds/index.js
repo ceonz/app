@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { TextInput, Textarea, Button } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 
-
 class TransferFunds extends Component {
   state = {
     fundRegistrationForm: {
@@ -21,31 +20,33 @@ class TransferFunds extends Component {
     });
   }
 
-  handleSubmit = (e, history) => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
-    const fund = {
-      fund_name: this.state.fundRegistrationForm.fund_name,
-      fund_transfer_amount: this.state.fundRegistrationForm.fund_transfer_amount,
-      fund_transfer_description: this.state.fundRegistrationForm.fund_transfer_description,
+    const transfer = {
+      fundId: this.props.fundId,
+      transfer_amount: this.state.fundRegistrationForm.fund_transfer_amount,
+      transfer_description: this.state.fundRegistrationForm.fund_transfer_description,
     }
 
-    // const addFund = firebase
-    //   .addToCollection('funds', fund)
-    //   .then(data => {
-    //     const newFundId = data._key.path.segments[1];
+    const addTransfer = firebase
+      .addToCollection('transfers', transfer)
+      .then(data => {
+        console.log('success');
+        console.log(data);
+        this.setState({
+          fundRegistrationForm: {
+            fund_transfer_amount: '',
+            fund_transfer_description: '',
+          }
+        })
 
-    //     this.setState({
-    //       fund_name: '',
-    //       fund_transfer_amount: '',
-    //       fund_transfer_description: ''''
-    //     });
-
-    //     // this.props.history.replace(`/funds/${newFundId}`);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+        // close panel
+        // this.props.closeSidePanel();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -81,7 +82,7 @@ TransferFunds.defaultProps = {
     {
       label: 'Transfer Amount',
       reference: 'fund_transfer_amount',
-      type: 'number',
+      type: 'text',
     }
   ]
 };
