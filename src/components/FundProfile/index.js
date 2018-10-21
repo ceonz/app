@@ -20,7 +20,7 @@ import TransferFunds from '../TransferFunds/index';
 class FundProfile extends Component {
   state = {
     fund_name: '',
-    fund_balance: '',
+    fund_balance: '0.00',
     fund_owner: '',
     fund_description: '',
     isLoggedIn: true,
