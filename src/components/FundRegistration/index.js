@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Textarea } from 'evergreen-ui';
+import { TextInput, Textarea, Spinner } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 
 
@@ -12,6 +12,7 @@ class FundRegistration extends Component {
       fund_email: '',
       fund_description: '',
       fund_password: '',
+      isLoading: false
     }
   };
 
@@ -50,16 +51,23 @@ class FundRegistration extends Component {
           fund_password: '',
         });
 
-        this.props.history.replace(`/funds/${newFundId}`);
+      this.setState({isLoading: true});
+      setTimeout(function(){
+           this.setState({isLoading: false});
+           this.props.history.replace(`/funds/${newFundId}`);
+      }.bind(this),1000);
       })
+
       .catch(err => {
         console.log(err);
       });
   };
 
   render() {
+
     return (
       <div>
+        <Spinner style={{display:this.state.isLoading ? "block" : "none"}}/>
         <form onSubmit={this.handleSubmit}>
           <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
