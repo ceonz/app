@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Avatar, Button } from 'evergreen-ui';
+import disaster from '../../disaster.png';
 
 class Homepage extends Component {
   handleCreateFundClick = () => {
@@ -12,7 +13,7 @@ class Homepage extends Component {
 
   render() {
     return <div className="homepage">
-        <Avatar src="https://pbs.twimg.com/profile_images/915954899925467136/MQFzXfTQ_400x400.jpg" size={150} className="home-avatar" />
+        <Avatar src={disaster} size={150} className="home-avatar" />
         <div className="homepage-buttons">
           <Button
             justifyContent="center"
