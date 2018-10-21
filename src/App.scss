@@ -187,9 +187,14 @@ button {
   .see-fund {
     position: absolute;
     right: 0;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     transform: translateY(-40px);
+    color: $dark-blue;
+
+    @include hover {
+      color: $light-blue;
+    }
   }
 
   &-location {
