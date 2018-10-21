@@ -3,9 +3,7 @@ import { Table, Icon, IconButton } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 class FundList extends Component {
   state = {
-    fund_name: '',
-    fund_balance: '',
-    fund_location: '',
+    funds: [],
   }
 
   componentDidMount() {
@@ -25,16 +23,15 @@ class FundList extends Component {
   }
 
   render() {
-    return (
-      <div className="funds-list-container">
+    return <div className="funds-list-container">
         <div className="funds-list-header">
           <h1>Funds</h1>
           <IconButton appearance="minimal" icon="plus" iconSize={30} />
         </div>
         <table className="funds-list">
           <tbody>
-            {this.state.funds && this.state.funds.map((fund) => (
-              <tr>
+            {this.state.funds && this.state.funds.map((fund, index) => (
+              <tr key={index}>
                 <td className="funds-list-name-balance">
                   <h2>{fund.fund_location}</h2>
                   <p>{`$${fund.fund_balance}`}</p>
@@ -48,8 +45,7 @@ class FundList extends Component {
             ))}
           </tbody>
         </table>
-      </div>
-    );
+      </div>;
   }
 }
 
