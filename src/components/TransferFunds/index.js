@@ -49,43 +49,26 @@ class TransferFunds extends Component {
   };
 
   render() {
-    return (
-      <div>
+    return <div>
         <form onSubmit={this.handleSubmit}>
-          <h2>Fund Tranfer</h2>
-          {this.props.inputs.map((input) => (
-            <div key={input.reference}>
+          <label htmlFor="fund_id">Fund ID</label>
+          <TextInput name="fund_id" type="text" value={this.props.fundId} disabled />
+          {this.props.inputs.map(input => <div key={input.reference}>
               <label htmlFor={input.reference}>{input.label}</label>
-              <TextInput
-                id={input.reference}
-                value={this.state.fundRegistrationForm[input.reference]}
-                type={input.type}
-                required={true}
-                onChange={e => this.onChange(e.target.value, input.reference)}
-              />
-            </div>
-          ))}
-          <label htmlFor="fund_transfer_description">Fund Description</label>
-          <Textarea
-            id="fund_transfer_description"
-            onChange={e => this.onChange(e.target.value, 'fund_transfer_description')}
-            value={this.state.fund_transfer_description}
-            required={true}
-          />
+              <TextInput id={input.reference} value={this.state.fundRegistrationForm[input.reference]} type={input.type} required={true} onChange={e => this.onChange(e.target.value, input.reference)} />
+            </div>)}
+          <label htmlFor="fund_transfer_description">
+            Transfer Description
+          </label>
+          <Textarea id="fund_transfer_description" onChange={e => this.onChange(e.target.value, 'fund_transfer_description')} value={this.state.fund_transfer_description} required={true} />
           <button type="submit">Transfer Funds</button>
         </form>
-      </div>
-    );
+      </div>;
   }
 }
 
 TransferFunds.defaultProps = {
   inputs: [
-    {
-      label: 'Fund Name',
-      reference: 'fund_name',
-      type: 'text',
-    },
     {
       label: 'Transfer Amount',
       reference: 'fund_transfer_amount',
