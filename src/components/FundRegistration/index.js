@@ -37,7 +37,8 @@ class FundRegistration extends Component {
       fund_owner: this.state.fundRegistrationForm.fund_owner,
       fund_email: this.state.fundRegistrationForm.fund_email,
       fund_description: this.state.fundRegistrationForm.fund_description,
-      fund_password: this.state.fundRegistrationForm.fund_password
+      fund_password: this.state.fundRegistrationForm.fund_password,
+      fund_balance: '0.00',
     }
 
     const addFund = firebase
