@@ -280,3 +280,19 @@ form {
 #panel-Donations {
   display: inline-block;
 }
+
+.return-home {
+  width: 100%;
+  padding: $indent__s 0;
+  background-color: $dark-blue;
+
+  a {
+    color: $white;
+    text-decoration: none;
+    padding: $indent__m 60px;
+  }
+}
+
+.page-links {
+  display: none;
+}

@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return <Router>
         <div className="App">
+          <button className="return-home"><a href='/home'>Disaster Relief</a></button>
           <React.Fragment>
             <Route exact path="/" render={() => <Redirect to="/home" />} />
           </React.Fragment>
@@ -25,7 +26,7 @@ class App extends Component {
           <Route exact path="/funds" component={FundList} />
           <Route exact path="/transfer-funds" component={TransferFunds} />
 
-          <ul>
+          <ul className="page-links">
             <li>
               <Link to={`/home`}>Home</Link>
             </li>
