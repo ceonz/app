@@ -14,7 +14,7 @@ class GoHomeButton extends Component {
         justifyContent="center"
         height={48}
         marginBottom={`15px`}
-        iconBefore="bank-account"
+        iconBefore="home"
         onClick={this.handleGoHomeClick}
         className="submit-button home-return"
       >
