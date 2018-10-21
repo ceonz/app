@@ -36,7 +36,7 @@ class App extends Component {
               <Link to={`/register`}>Register Fund</Link>
             </li>
             <li>
-              <Link to={`/funds/HMWlsciDaGASrccRLu2a`}>Fund Profile</Link>
+              <Link to={`/funds/CbDncZSB4jmVZ7TjRR4s`}>Fund Profile</Link>
             </li>
             <li>
               <Link to={`/funds`}>Fund List</Link>
