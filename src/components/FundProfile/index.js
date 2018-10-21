@@ -180,7 +180,7 @@ class FundProfile extends Component {
               aria-labelledby={tab}
               aria-hidden={index !== this.state.selectedTabIndex}
               display={
-                index === this.state.selectedTabIndex ? 'block' : 'none'
+                index === this.state.selectedTabIndex ? 'inline-block' : 'none'
               }
             >
               {index == 0 ? donationsTab : ''}
