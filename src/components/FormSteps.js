@@ -6,7 +6,7 @@ class FormSteps extends Component {
         const options =
         [
             { label: 'Credit Check', value: 'credit' },
-            { label: 'Register Fund', value: 'info' }
+            { label: 'Fund Registration', value: 'info' }
         ];
 
         const optionValue = (this.props.step || 1) - 1;
