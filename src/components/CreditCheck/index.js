@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { TextInput, Textarea } from 'evergreen-ui';
+import { FormField, TextInput, Textarea } from 'evergreen-ui';
+import FormSpinner from '../FormSpinner';
+import FormSteps from '../FormSteps';
 
 class CreditCheck extends Component {
   state = {
@@ -10,7 +12,8 @@ class CreditCheck extends Component {
       phone: '',
       ssn: '',
       ccNumber: '',
-    }
+    },
+    isLoading: false,
   };
 
   saveCreditCheckForm = creditCheckForm => {
@@ -31,31 +34,34 @@ class CreditCheck extends Component {
     });
   }
 
-  handleSubmit = (e, history) => {
-    this.props.history.replace('/register');
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ isLoading: true });
+
+    setTimeout(function () {
+      this.setState({ isLoading: false });
+      this.props.history.replace('/register');
+    }.bind(this), 1000);
   };
 
   render() {
-    return (
-      <div>
+    const registerForm = <>
+        <FormSteps step="1" />
         <form onSubmit={this.handleSubmit}>
           <h2>Credit Check</h2>
-          {this.props.inputs.map((input) => (
-            <div key={input.reference}>
-              <label htmlFor={input.reference}>{input.label}</label>
-              <TextInput
-                id={input.reference}
-                value={this.state.creditCheckForm[input.reference]}
-                type={input.type}
-                required={true}
-                onChange={e => this.onChange(e.target.value, input.reference)}
-              />
-            </div>
-          ))}
+          {this.props.inputs.map(input =>
+            <React.Fragment key={input.reference}>
+              <FormField label={input.label}>
+                <TextInput id={input.reference} value={this.state.creditCheckForm[input.reference]} type={input.type} required={true} onChange={e => this.onChange(e.target.value, input.reference)} />
+              </FormField>
+            </React.Fragment>)}
           <button type="submit">Submit Credit Check</button>
         </form>
+      </>;
+
+    return <div>
+        {this.state.isLoading ? <FormSpinner text={`Checking Credit Score...`} /> : registerForm}
       </div>
-    );
   }
 }
 
