@@ -34,11 +34,7 @@ class FundProfile extends Component {
   render() {
     return (
     <div>
-      <h2>Fund Name</h2>
-      {this.props.listItems.map(listItem => <div key={listItem.reference}>
-          <label htmlFor={listItem.reference}>{`${listItem.label}: `}</label>
-          <p>{this.state[listItem.reference] || listItem.value}</p>
-        </div>)}
+      <h2>{this.state.fund_name}</h2>
         {this.state.isLoggedIn ? 
       <button onClick={this.transferFunds}>Transfer Funds</button> : ''}
       <Table>
