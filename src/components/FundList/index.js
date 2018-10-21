@@ -25,7 +25,7 @@ class FundList extends Component {
   render() {
     return <div className="funds-list-container">
         <div className="funds-list-header">
-          <h1>Funds</h1>
+          <h1>Disaster Relief - Local Community Funds</h1>
           <IconButton appearance="minimal" icon="plus" iconSize={30} />
         </div>
         <table className="funds-list">
