@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import { Table, Icon } from 'evergreen-ui';
+import firebase from '../../util/firebase';
 class FundList extends Component {
+
+  componentDidMount() {
+    firebase.get('funds', {
+      context: this,
+    }).then(data => {
+      console.log(data);
+      if (!data.length) {
+        return false;
+      }
+      this.setState({
+        funds: data,
+      });
+    }).catch(err => {
+      //handle error
+    })
+  }
 
   render() {
     return (
