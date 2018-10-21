@@ -31,22 +31,23 @@ class FundList extends Component {
           <h1>Funds</h1>
           <IconButton appearance="minimal" icon="plus" iconSize={30} />
         </div>
-        <Table>
-          <Table.Body>
+        <table className="funds-list">
+          <tbody>
             {this.state.funds && this.state.funds.map((fund) => (
-              <Table.Row className="funds-list" height={"auto"}>
-                <Table.TextCell>
-                  <h1 className="funds-list-name">{fund.fund_name}</h1>
-                  <div className="funds-list-location">
-                    <Icon className="location-icon" icon="map-marker" />
-                    <span>{fund.fund_location}</span>
-                  </div>
-                </Table.TextCell>
-                <Table.TextCell isNumber className="funds-list-balance">{fund.fund_balance}</Table.TextCell>
-              </Table.Row>
+              <tr>
+                <td className="funds-list-name-balance">
+                  <h2>Awesome Fund name</h2>
+                  <p>350,000</p>
+                </td>
+                <td className="funds-list-location">
+                  <Icon className="location-icon" icon="map-marker" />
+                  <p>America</p>
+                </td>
+              <hr class="table-divider"/>
+              </tr>
             ))}
-          </Table.Body>
-        </Table>
+          </tbody>
+        </table>
       </div>
     );
   }
