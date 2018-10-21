@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Failure from '../Banners/Failure';
 import Success from '../Banners/Success';
 import firebase from '../../util/firebase';
-import { Table, Icon, Alert } from 'evergreen-ui';
+import { Table, Icon, Alert, Tab, TabNavigation} from 'evergreen-ui';
 
 class FundProfile extends Component {
   state = {
@@ -44,6 +44,13 @@ class FundProfile extends Component {
       <h2>{this.state.fund_name}</h2>
         {this.state.isLoggedIn ? 
       <button onClick={this.transferFunds}>Transfer Funds</button> : ''}
+      <TabNavigation>
+  {['Fund Information', 'Donations', 'Transfers'].map((tab, index) => (
+    <Tab key={tab} is="a" href="#" id={tab} isSelected={index === 0}>
+      {tab}
+    </Tab>
+  ))}
+</TabNavigation>
       <Table>
         <Table.Body>
           {this.props.listItems.map((listItem) => (
