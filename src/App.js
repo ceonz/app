@@ -4,13 +4,20 @@ import FundRegistration from './components/FundRegistration';
 import Homepage from './components/Homepage';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Link } from 'react-router-dom';
 import './App.scss';
 
 class App extends Component {
   render() {
     return <Router>
       <div className="App">
+        <React.Fragment>
+          <Route
+            exact
+            path="/"
+            render={() => <Redirect to="/home" />}
+          />
+        </React.Fragment>
         <Route exact path="/home" component={Homepage} />
         <Route exact path="/credit-check" component={CreditCheck} />
         <Route exact path="/register-fund" component={FundRegistration} />
