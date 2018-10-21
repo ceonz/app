@@ -80,6 +80,7 @@ class FundRegistration extends Component {
                   onChange={e =>
                     this.onChange(e.target.value, input.reference)
                   }
+                  placeholder={input.placeholder || ''}
                 />
               </FormField>
             </React.Fragment>
