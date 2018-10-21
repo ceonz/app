@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { TextInput, Textarea } from 'evergreen-ui';
+import { TextInput, Textarea, Spinner } from 'evergreen-ui';
 import firebase from '../../util/firebase';
+
 
 class FundRegistration extends Component {
   state = {
     fundRegistrationForm: {
       fund_name: '',
+      fund_location: '',
       fund_owner: '',
       fund_email: '',
       fund_description: '',
+      fund_password: '',
+      isLoading: false
     }
   };
 
@@ -26,33 +30,44 @@ class FundRegistration extends Component {
 
     const fund = {
       fund_name: this.state.fundRegistrationForm.fund_name,
+      fund_location: this.state.fundRegistrationForm.fund_location,
       fund_owner: this.state.fundRegistrationForm.fund_owner,
       fund_email: this.state.fundRegistrationForm.fund_email,
-      fund_description: this.state.fundRegistrationForm.fund_description
+      fund_description: this.state.fundRegistrationForm.fund_description,
+      fund_password: this.state.fundRegistrationForm.fund_password
     }
 
-    var addFund = firebase
+    const addFund = firebase
       .addToCollection('funds', fund)
       .then(data => {
         const newFundId = data._key.path.segments[1];
 
         this.setState({
           fund_name: '',
+          fund_location: '',
           fund_owner: '',
           fund_email: '',
           fund_description: '',
+          fund_password: '',
         });
 
-        this.props.history.replace(`/funds/${newFundId}`);
+      this.setState({isLoading: true});
+      setTimeout(function(){
+           this.setState({isLoading: false});
+           this.props.history.replace(`/funds/${newFundId}`);
+      }.bind(this),1000);
       })
+
       .catch(err => {
         console.log(err);
       });
   };
 
   render() {
+
     return (
       <div>
+        <Spinner style={{display:this.state.isLoading ? "block" : "none"}}/>
         <form onSubmit={this.handleSubmit}>
           <h2>Fund Registration</h2>
           {this.props.inputs.map((input) => (
@@ -89,6 +104,11 @@ FundRegistration.defaultProps = {
       type: 'text',
     },
     {
+      label: 'Fund Location',
+      reference: 'fund_location',
+      type: 'text',
+    },
+    {
       label: 'Owner Name',
       reference: 'fund_owner',
       type: 'text',
@@ -97,6 +117,11 @@ FundRegistration.defaultProps = {
       label: 'Owner Email',
       reference: 'fund_email',
       type: 'email',
+    },
+    {
+      label: 'Password',
+      reference: 'fund_password',
+      type: 'text',
     },
   ]
 };

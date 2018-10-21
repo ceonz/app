@@ -2,6 +2,7 @@ import CreditCheck from './components/CreditCheck';
 import FundList from './components/FundList';
 import FundProfile from './components/FundProfile';
 import FundRegistration from './components/FundRegistration';
+import TransferFunds from './components/TransferFunds';
 import Homepage from './components/Homepage';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -22,6 +23,8 @@ class App extends Component {
           <Route exact path="/register" component={FundRegistration} />
           <Route exact path="/funds/:id" component={FundProfile} />
           <Route exact path="/funds" component={FundList} />
+          <Route exact path="/transfer-funds" component={TransferFunds} />
+
           <ul>
             <li>
               <Link to={`/home`}>Home</Link>
