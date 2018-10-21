@@ -10,8 +10,8 @@ class FundRegistration extends Component {
     fundRegistrationForm: {
       fund_name: 'Funds for Female Farmers',
       fund_location: 'Nairobi, Kenya',
-      fund_owner: 'Something Digital',
-      fund_email: 'sdinteractive@somethingdigital.com',
+      fund_owner: 'Ana Acosta',
+      fund_email: 'aacosta@gmail.com',
       fund_password: 'password1',
       fund_description: 'test',
     },
