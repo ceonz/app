@@ -160,10 +160,15 @@ button {
   padding-left: $indent__m;
   padding-right: $indent__m;
   box-sizing: border-box;
+
+  .add-button {
+    float: right !important;
+  }
 }
 
 .funds-list {
   width: 100%;
+  position: relative;
 
   &-name-balance {
     display: flex;
@@ -179,6 +184,14 @@ button {
     }
   }
 
+  .see-fund {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    transform: translateY(-40px);
+  }
+
   &-location {
     display: flex;
 
@@ -188,9 +201,7 @@ button {
   }
 
   &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    text-align: center;
   }
 
   .table-divider {
@@ -236,4 +247,17 @@ form {
 
 .form-tab-labels label {
   margin: 0 auto;
+}
+
+.submit-button {
+  width: 100%;
+  max-width: 460px;
+
+  @include hover {
+    color: #252666 !important;
+  }
+}
+
+.fund_description {
+  margin-bottom: $indent__m;
 }

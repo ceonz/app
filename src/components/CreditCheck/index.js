@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormField, TextInput, Textarea } from 'evergreen-ui';
+import { FormField, TextInput, Textarea, Button } from 'evergreen-ui';
 import FormSpinner from '../FormSpinner';
 import FormSteps from '../FormSteps';
 
@@ -62,7 +62,16 @@ class CreditCheck extends Component {
               />
               </FormField>
             </React.Fragment>)}
-          <button type="submit">Submit Credit Check</button>
+            <Button
+              justifyContent="center"
+              height={48}
+              marginBottom={`15px`}
+              iconBefore="credit-card"
+              onClick={this.handleCreateFundClick}
+              className="submit-button"
+            >
+              Submit your credit check
+              </Button>
         </form>
       </>;
 

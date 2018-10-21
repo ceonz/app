@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormField, TextInput, Textarea } from 'evergreen-ui';
+import { FormField, TextInput, Textarea, Button } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 import FormSpinner from '../FormSpinner';
 import FormSteps from '../FormSteps';
@@ -86,12 +86,19 @@ class FundRegistration extends Component {
               </FormField>
             </React.Fragment>
           ))}
-          <label htmlFor="fund_description">Fund Description</label>
-          <Textarea id="fund_description" onChange={e => this.onChange(e.target.value, 'fund_description')} value={this.state.fund_description} required={true} />
-          <button type="submit">
-            Start Your Community Fund
-            <Icon icon="arrow-right" marginLeft={`10px`} />
-          </button>
+        <FormField className="fund_description" label='Fund Description'>
+          <Textarea onChange={e => this.onChange(e.target.value, 'fund_description')} value={this.state.fund_description} required={true} />
+        </FormField>
+        <Button
+          justifyContent="center"
+          height={48}
+          marginBottom={`15px`}
+          iconBefore="form"
+          onClick={this.handleCreateFundClick}
+          className="submit-button"
+        >
+          Register Fund
+        </Button>
         </form>
       </>;
     return <div>
