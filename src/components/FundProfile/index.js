@@ -25,6 +25,12 @@ class FundProfile extends Component {
       }});
   }
 
+  transferFunds = () => {
+    this.props.history.replace('/transfer-funds');
+  }
+
+
+
   render() {
     return (
     <div>
