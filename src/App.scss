@@ -164,6 +164,7 @@ button {
 
 .funds-list {
   width: 100%;
+  position: relative;
 
   &-name-balance {
     display: flex;
@@ -177,6 +178,14 @@ button {
       font-size: 24px;
       font-weight: bold;
     }
+  }
+
+  .see-fund {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    transform: translateY(-40px);
   }
 
   &-location {
