@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TextInput, Textarea } from 'evergreen-ui';
-import * as firebase from 'firebase';
+import firebase from '../../util/firebase';
 
 class FundRegistration extends Component {
   state = {
@@ -23,22 +23,31 @@ class FundRegistration extends Component {
 
   handleSubmit = (e, history) => {
     e.preventDefault();
-    const fundsRef = firebase.database().ref('funds');
+
     const fund = {
       fund_name: this.state.fundRegistrationForm.fund_name,
       fund_owner: this.state.fundRegistrationForm.fund_owner,
       fund_email: this.state.fundRegistrationForm.fund_email,
       fund_description: this.state.fundRegistrationForm.fund_description
     }
-    fundsRef.push(fund);
-    console.log(fund);
-    this.setState({
-      fund_name: '',
-      fund_owner: '',
-      fund_email: '',
-      fund_description: ''
-    });
-    // this.props.history.replace('/fund-profile');
+
+    var addFund = firebase
+      .addToCollection('funds', fund)
+      .then(data => {
+        const newFundId = data._key.path.segments[1];
+
+        this.setState({
+          fund_name: '',
+          fund_owner: '',
+          fund_email: '',
+          fund_description: '',
+        });
+
+        this.props.history.replace(`/fund-profile/${newFundId}`);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {

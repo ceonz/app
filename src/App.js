@@ -12,26 +12,30 @@ class App extends Component {
 
   render() {
     return <Router>
-      <div className="App">
-        <React.Fragment>
-          <Route
-            exact
-            path="/"
-            render={() => <Redirect to="/home" />}
-          />
-        </React.Fragment>
-        <Route exact path="/home" component={Homepage} />
-        <Route exact path="/credit-check" component={CreditCheck} />
-        <Route exact path="/register-fund" component={FundRegistration} />
-        <Route exact path="/fund-profile" component={FundProfile} />
-        <ul>
-          <li><Link to={`/home`}>Home</Link></li>
-          <li><Link to={`/credit-check`}>Credit Check</Link></li>
-          <li><Link to={`/register-fund`}>Register Fund</Link></li>
-          <li><Link to={`/fund-profile`}>Register Fund</Link></li>
-        </ul>
-      </div>
-      </Router>
+        <div className="App">
+          <React.Fragment>
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
+          </React.Fragment>
+          <Route exact path="/home" component={Homepage} />
+          <Route exact path="/credit-check" component={CreditCheck} />
+          <Route exact path="/register-fund" component={FundRegistration} />
+          <Route exact path="/fund-profile/:id" component={FundProfile} />
+          <ul>
+            <li>
+              <Link to={`/home`}>Home</Link>
+            </li>
+            <li>
+              <Link to={`/credit-check`}>Credit Check</Link>
+            </li>
+            <li>
+              <Link to={`/register-fund`}>Register Fund</Link>
+            </li>
+            <li>
+              <Link to={`/fund-profile`}>Register Fund</Link>
+            </li>
+          </ul>
+        </div>
+      </Router>;
   }
 }
 
