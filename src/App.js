@@ -1,4 +1,5 @@
 import CreditCheck from './components/CreditCheck';
+import FundList from './components/FundList';
 import FundProfile from './components/FundProfile';
 import FundRegistration from './components/FundRegistration';
 import Homepage from './components/Homepage';
@@ -22,11 +23,13 @@ class App extends Component {
         <Route exact path="/credit-check" component={CreditCheck} />
         <Route exact path="/register-fund" component={FundRegistration} />
         <Route exact path="/fund-profile" component={FundProfile} />
+        <Route exact path="/fund-list" component={FundList} />
         <ul>
           <li><Link to={`/home`}>Home</Link></li>
           <li><Link to={`/credit-check`}>Credit Check</Link></li>
           <li><Link to={`/register-fund`}>Register Fund</Link></li>
-          <li><Link to={`/fund-profile`}>Register Fund</Link></li>
+          <li><Link to={`/fund-profile`}>Fund Profile</Link></li>
+          <li><Link to={`/fund-list`}>Fund List</Link></li>
         </ul>
       </div>
       </Router>
