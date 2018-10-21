@@ -34,7 +34,7 @@ class FundList extends Component {
               <tr key={index}>
                 <td className="funds-list-name-balance">
                   <h2>{fund.fund_location}</h2>
-                  <p>{`$${fund.fund_balance}`}</p>
+                  <p>{`$${fund.fund_balance || '0.00'}`}</p>
                 </td>
                 <td className="funds-list-location">
                   <Icon className="location-icon" icon="map-marker" />
