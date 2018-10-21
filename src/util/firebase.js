@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import Rebase from 're-base';
 require('firebase/firestore');
 require('dotenv');
