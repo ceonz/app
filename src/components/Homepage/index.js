@@ -13,7 +13,7 @@ class Homepage extends Component {
         />
         <div className="homepage-buttons">
           <button type="submit"><a href="/credit-check">Start Credit Check</a></button>
-          <button type="submit"><a href="/register-fund">Create A Fund</a></button>
+          <button type="submit"><a href="/register">Create A Fund</a></button>
           <button type="submit"><a href="/fund-profile">See List of Funds</a></button>
         </div>
         <div className="credits">
