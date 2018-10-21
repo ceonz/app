@@ -61,6 +61,24 @@ class FundProfile extends Component {
       .catch(err => {
         //handle error
       });
+
+    firebase
+      .get('transfers', {
+        context: this,
+        query: ref => ref.where('fundId', '==', id),
+      })
+      .then(data => {
+        console.log(data)
+        if (data) {
+          this.setState({
+            transfers: data,
+          })
+        }
+        //do something with data
+      })
+      .catch(err => {
+        //handle error
+      });
   }
 
   transferFunds = () => {
@@ -70,6 +88,26 @@ class FundProfile extends Component {
 
   render() {
     const tabList = ['Donations', 'Transfers'];
+
+    const donationsTab = <ul>
+        {!this.state.donations && <p>No donations</p>}
+        {this.state.donations && this.state.donations.map(
+            (donation, index) => {
+              return <li key={index}>{donation.donation_amount}</li>;
+            }
+          )}
+      </ul>;
+
+    const transfersTab = <ul>
+      {
+        !this.state.transfers  && <p>No transfers</p>
+      }
+      {this.state.transfers &&
+        this.state.transfers.map((transfer, index) => {
+          return <li key={index}>{transfer.transfer_description} -${transfer.transfer_amount}</li>;
+        })}
+      </ul>;
+
     return <div>
         <Alert intent="success" title="Congratulations! You have successfully created your community's fund" marginBottom={32} style={{ display: this.state.isSuccessful ? 'flex' : 'none' }} />
         <Pane>
@@ -151,6 +189,8 @@ class FundProfile extends Component {
                 })}
               </ul>
               <Paragraph>Panel {tab}</Paragraph>
+              {index == 0 ? donationsTab : ''}
+              {index == 1 ? transfersTab : ''}
             </Pane>
           ))}
         </Pane>
