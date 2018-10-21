@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Textarea } from 'evergreen-ui';
+import { TextInput, Textarea, Button } from 'evergreen-ui';
 import firebase from '../../util/firebase';
 
 class TransferFunds extends Component {
@@ -67,7 +67,16 @@ class TransferFunds extends Component {
             Transfer Description
           </label>
           <Textarea id="fund_transfer_description" onChange={e => this.onChange(e.target.value, 'fund_transfer_description')} value={this.state.fund_transfer_description} required={true} />
-          <button type="submit">Transfer Funds</button>
+          <Button
+            justifyContent="center"
+            height={48}
+            marginBottom={`15px`}
+            iconBefore="arrows-horizontal"
+            onClick={this.props.transferFunds}
+            className="submit-button"
+          >
+          Transfer Funds
+          </Button>
         </form>
       </div>;
   }

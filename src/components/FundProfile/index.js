@@ -20,7 +20,7 @@ import TransferFunds from '../TransferFunds/index';
 class FundProfile extends Component {
   state = {
     fund_name: '',
-    fund_balance: '',
+    fund_balance: '0.00',
     fund_owner: '',
     fund_description: '',
     isLoggedIn: true,
@@ -101,13 +101,13 @@ class FundProfile extends Component {
       </ul>
     </>;
 
-    const transfersTab = <ul>
+    const transfersTab = <ul className="transfers-list">
       {
         !this.state.transfers  && <p>No transfers</p>
       }
       {this.state.transfers &&
         this.state.transfers.map((transfer, index) => {
-        return <li key={index}><small>{transfer.transfer_to}</small><br/>{transfer.transfer_description} -${transfer.transfer_amount}</li>;
+        return <li key={index}><span>{`${transfer.transfer_description}: `}</span><span className="transfer-amount">{`- $${transfer.transfer_amount}`}</span></li>;
         })}
       </ul>;
 
@@ -180,7 +180,7 @@ class FundProfile extends Component {
               aria-labelledby={tab}
               aria-hidden={index !== this.state.selectedTabIndex}
               display={
-                index === this.state.selectedTabIndex ? 'block' : 'none'
+                index === this.state.selectedTabIndex ? 'inline-block' : 'none'
               }
             >
               {index == 0 ? donationsTab : ''}

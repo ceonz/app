@@ -1,3 +1,4 @@
+import GoHomeButton from './components/GoHomeButton';
 import CreditCheck from './components/CreditCheck';
 import FundList from './components/FundList';
 import FundProfile from './components/FundProfile';
@@ -15,6 +16,7 @@ class App extends Component {
   render() {
     return <Router>
         <div className="App">
+          <GoHomeButton />
           <React.Fragment>
             <Route exact path="/" render={() => <Redirect to="/home" />} />
           </React.Fragment>
@@ -25,7 +27,7 @@ class App extends Component {
           <Route exact path="/funds" component={FundList} />
           <Route exact path="/transfer-funds" component={TransferFunds} />
 
-          <ul>
+          <ul className="page-links">
             <li>
               <Link to={`/home`}>Home</Link>
             </li>
