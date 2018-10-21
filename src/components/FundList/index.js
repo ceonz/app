@@ -40,6 +40,7 @@ class FundList extends Component {
                   <Icon className="location-icon" icon="map-marker" />
                   <p>{fund.fund_location}</p>
                 </td>
+                <Icon className="see-fund" icon="chevron-right" />
                 <hr class="table-divider"/>
               </tr>
             ))}
