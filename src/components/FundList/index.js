@@ -36,12 +36,12 @@ class FundList extends Component {
             {this.state.funds && this.state.funds.map((fund) => (
               <tr>
                 <td className="funds-list-name-balance">
-                  <h2>Awesome Fund name</h2>
-                  <p>350,000</p>
+                  <h2>{fund.fund_location}</h2>
+                  <p>{`$${fund.fund_balance}`}</p>
                 </td>
                 <td className="funds-list-location">
                   <Icon className="location-icon" icon="map-marker" />
-                  <p>America</p>
+                  <p>{fund.fund_location}</p>
                 </td>
               <hr class="table-divider"/>
               </tr>
