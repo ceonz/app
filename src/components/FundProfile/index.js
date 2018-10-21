@@ -107,7 +107,7 @@ class FundProfile extends Component {
       }
       {this.state.transfers &&
         this.state.transfers.map((transfer, index) => {
-          return <li key={index}>{transfer.transfer_description} -${transfer.transfer_amount}</li>;
+        return <li key={index}><small>{transfer.transfer_to}</small><br/>{transfer.transfer_description} -${transfer.transfer_amount}</li>;
         })}
       </ul>;
 
