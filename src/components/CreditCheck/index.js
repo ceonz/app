@@ -52,7 +52,14 @@ class CreditCheck extends Component {
           {this.props.inputs.map(input =>
             <React.Fragment key={input.reference}>
               <FormField label={input.label}>
-                <TextInput id={input.reference} value={this.state.creditCheckForm[input.reference]} type={input.type} required={true} onChange={e => this.onChange(e.target.value, input.reference)} />
+              <TextInput
+                id={input.reference}
+                value={this.state.creditCheckForm[input.reference]}
+                type={input.type}
+                required={true}
+                onChange={e => this.onChange(e.target.value, input.reference)}
+                placeholder={input.placeholder || '' }
+              />
               </FormField>
             </React.Fragment>)}
           <button type="submit">Submit Credit Check</button>
