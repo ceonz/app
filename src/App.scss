@@ -57,8 +57,10 @@ $screen__xl: 1440px;
 
 .App {
   text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 label {
@@ -76,17 +78,40 @@ ul {
   flex-direction: column;
   align-items: center;
   min-height: 600px;
-  height: 100%;
   justify-content: center;
+  width: 100vw;
+  height: 100vh;
 
-  button {
-    background-color: $white;
-    color: $dark-blue;
-  }
+  &-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $indent__s;
+    width: 100%;
+    margin-left: $indent__xs;
 
-  button {
-    @include hover {
-      background-color: $light-blue;
+    @include min-screen($screen__m) {
+      flex-direction: row;
+      justify-content: center;
+
+      button {
+        max-width: 250px;
+        padding: $indent__s 0;
+        width: 100%;
+
+        &:not(:last-of-type) {
+          margin-right: $indent__m;
+        }
+      }
+    }
+
+    button {
+      background-color: $white;
+      color: $dark-blue;
+
+      @include hover {
+        background-color: $light-blue;
+      }
     }
   }
 
@@ -105,7 +130,7 @@ ul {
 }
 
 button {
-  max-width: 460px;
+  max-width: 400px;
   width: 100%;
   font-size: 18px;
   margin-top: 7px;
