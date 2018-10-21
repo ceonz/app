@@ -30,9 +30,8 @@ class FundList extends Component {
     return <div className="funds-list-container">
         <div className="funds-list-header">
           <h1>Disaster Relief - Local Community Funds</h1>
-          <IconButton appearance="minimal" icon="plus" iconSize={30} onClick={this.handleCreateNewFund} />
         </div>
-          <IconButton appearance="minimal" className="add-button" icon="plus" iconSize={30} />
+        <IconButton appearance="minimal" className="add-button" icon="plus" iconSize={30} onClick={this.handleCreateNewFund} />
         <table className="funds-list">
           <tbody>
             {this.state.funds && this.state.funds.map((fund, index) => (
