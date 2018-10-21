@@ -45,7 +45,7 @@ class FundList extends Component {
                   <p>{fund.fund_location}</p>
                 </td>
                 <Icon className="see-fund" icon="chevron-right" />
-                <hr class="table-divider"/>
+                <hr className="table-divider"/>
               </tr>
             ))}
           </tbody>
