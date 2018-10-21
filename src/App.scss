@@ -95,8 +95,7 @@ ul {
       justify-content: center;
 
       button {
-        max-width: 250px;
-        padding: $indent__s 0;
+        max-width: 300px;
         width: 100%;
 
         &:not(:last-of-type) {
@@ -105,17 +104,13 @@ ul {
       }
     }
 
-    a {
-      text-decoration: none;
-      color: $dark-blue;
-    }
-
     button {
       background-color: $white;
       color: $dark-blue;
 
       @include hover {
-        background-color: $light-blue;
+        color: $dark-blue;
+        background-color: $light-blue !important;
       }
     }
   }
