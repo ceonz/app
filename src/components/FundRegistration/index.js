@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { TextInput, Textarea, Spinner } from 'evergreen-ui';
+import { FormField, TextInput, Textarea } from 'evergreen-ui';
 import firebase from '../../util/firebase';
-
+import FormSpinner from '../FormSpinner';
+import FormSteps from '../FormSteps';
 
 class FundRegistration extends Component {
   state = {
@@ -12,8 +13,8 @@ class FundRegistration extends Component {
       fund_email: '',
       fund_description: '',
       fund_password: '',
-      isLoading: false
-    }
+    },
+    isLoading: false
   };
 
   onChange = (value, reference) => {
@@ -51,12 +52,12 @@ class FundRegistration extends Component {
           fund_password: '',
         });
 
-      this.setState({isLoading: true});
-      setTimeout(function(){
-           this.setState({isLoading: false});
-           this.props.history.replace(`/funds/${newFundId}`);
-      }.bind(this),1000);
-      })
+        this.setState({isLoading: true});
+        setTimeout(function(){
+            this.setState({isLoading: false});
+            this.props.history.replace(`/funds/${newFundId}`);
+        }.bind(this),1000);
+        })
 
       .catch(err => {
         console.log(err);
@@ -64,35 +65,33 @@ class FundRegistration extends Component {
   };
 
   render() {
-
-    return (
-      <div>
-        <Spinner style={{display:this.state.isLoading ? "block" : "none"}}/>
+    const registerForm = <>
+        <FormSteps step="2" />
         <form onSubmit={this.handleSubmit}>
           <h2>Fund Registration</h2>
-          {this.props.inputs.map((input) => (
-            <div key={input.reference}>
-              <label htmlFor={input.reference}>{input.label}</label>
-              <TextInput
-                id={input.reference}
-                value={this.state.fundRegistrationForm[input.reference]}
-                type={input.type}
-                required={true}
-                onChange={e => this.onChange(e.target.value, input.reference)}
-              />
-            </div>
+          {this.props.inputs.map(input => (
+            <React.Fragment key={input.reference}>
+              <FormField label={input.label}>
+                <TextInput
+                  id={input.reference}
+                  value={this.state.fundRegistrationForm[input.reference]}
+                  type={input.type}
+                  required={true}
+                  onChange={e =>
+                    this.onChange(e.target.value, input.reference)
+                  }
+                />
+              </FormField>
+            </React.Fragment>
           ))}
           <label htmlFor="fund_description">Fund Description</label>
-          <Textarea
-            id="fund_description"
-            onChange={e => this.onChange(e.target.value, 'fund_description')}
-            value={this.state.fund_description}
-            required={true}
-          />
+          <Textarea id="fund_description" onChange={e => this.onChange(e.target.value, 'fund_description')} value={this.state.fund_description} required={true} />
           <button type="submit">Register Fund</button>
         </form>
-      </div>
-    );
+      </>;
+    return <div>
+        {this.state.isLoading ? <FormSpinner text={`Creating Community Fund...`} /> : registerForm}
+      </div>;
   }
 }
 
@@ -121,7 +120,7 @@ FundRegistration.defaultProps = {
     {
       label: 'Password',
       reference: 'fund_password',
-      type: 'text',
+      type: 'password',
     },
   ]
 };
