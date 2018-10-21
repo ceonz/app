@@ -12,7 +12,7 @@ class FormSteps extends Component {
         const optionValue = (this.props.step || 1) - 1;
 
         return <Pane display="flex" justifyContent="center" marginTop={`20px`} marginBottom={`20px`}>
-            <SegmentedControl width={240} options={options} value={options[optionValue].value} />
+            <SegmentedControl width={240} className="form-tab-labels" options={options} value={options[optionValue].value} />
           </Pane>;
     }
 }
