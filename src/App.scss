@@ -241,4 +241,8 @@ form {
 .submit-button {
   width: 100%;
   max-width: 460px;
+
+  @include hover {
+    color: #252666 !important;
+  }
 }
